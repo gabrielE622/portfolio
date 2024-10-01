@@ -4,7 +4,7 @@ import Button from '../custom/Button';
 const Navbar = () => {
   return (
     <div className="navbar-container">
-      <h1 className="navbar-h1 cursor-pointer">Gabriel J.</h1>
+      <h1 className="navbar-h1 cursor-pointer">G</h1>
       <div className="navbar-button-container">
         <Button title="About" />
         <Button title="Projects" />

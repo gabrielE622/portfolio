@@ -3,26 +3,47 @@
 @tailwind utilities;
 
 body {
-    @apply bg-black text-white;
-  }
-  
-  button {
-    @apply bg-primary text-light;
-  }
-  
+  @apply bg-black text-white;
+}
+
+button {
+  @apply bg-primary text-light;
+}
+
 .navbar-container {
-    @apply flex flex-col md:flex-row items-center justify-between
-     bg-black text-white px-6 py-5 border-b-2 border-white
+  @apply flex flex-col md:flex-row items-center justify-between
+    bg-black text-white px-6 py-5 border-b-2 border-white;
 }
 
 .navbar-h1 {
-    @apply font-bold text-lg hover:text-primary
+  @apply font-bold text-5xl hover:text-primary delay-150 duration-300 ease-in-out;
 }
 
 .navbar-button-container {
-    @apply flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0
+  @apply flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0;
 }
 
 .custom-button {
-    @apply bg-black hover:text-primary cursor-pointer text-light font-bold py-2 px-4 rounded
+  @apply bg-black hover:text-primary cursor-pointer text-light font-bold py-2 px-4 rounded;
 }
+
+.hero-intro {
+  @apply mt-5 text-white text-5xl font-bold;
+}
+
+
+.hero-container {
+  @apply mt-40 flex flex-col justify-center items-center text-center;
+}
+
+.hero-intro {
+  @apply text-white text-6xl font-extrabold leading-tight;
+}
+
+.hero-body {
+  @apply text-gray-400 text-2xl font-light mt-4;
+}
+
+
+
+
