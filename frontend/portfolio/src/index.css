@@ -33,7 +33,7 @@ button {
 
 
 .hero-container {
-  @apply mt-40 flex flex-col justify-center items-center text-center;
+  @apply  flex flex-col justify-center items-center text-center bg-black h-screen;
 }
 
 .hero-intro {
@@ -41,9 +41,23 @@ button {
 }
 
 .hero-body {
-  @apply text-gray-400 text-2xl font-light mt-4;
+  @apply text-gray-400 text-2xl font-light mt-4 max-w-xl;
 }
 
+.about-container {
+  @apply flex flex-col items-center bg-white text-black h-screen;
+}
 
+.center-content {
+  @apply text-center;
+}
+
+.more-about-container {
+  @apply w-full flex justify-center items-start mt-10 px-6;
+}
+
+.additional-info {
+  @apply text-lg;
+}
 
 
