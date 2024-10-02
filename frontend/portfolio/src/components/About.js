@@ -26,19 +26,21 @@ function About() {
 
                 {/* Right Column - Skills */}
                 <div className="skills w-full md:w-5/12">
-                    <h2 className="text-2xl font-bold mb-4">My Skills</h2>
-                    <div className="grid grid-cols-3 gap-4">
-                        <div>Python</div>
-                        <div>FastAPI</div>
-                        <div>PostgreSQL</div>
-                        <div>Microservices</div>
-                        <div>Test Automation</div>
-                        <div>React</div>
-                        <div>HTML</div>
-                        <div>CSS</div>
-                        <div>JavaScript</div>
+                    <h2 className="text-2xl font-bold mb-2">My Skills</h2>
+                    <div className="skills">
+                        <div className="skills-badge">Python</div>
+                        <div className="skills-badge">Java</div>
+                        <div className="skills-badge">FastAPI</div>
+                        <div className="skills-badge">PostgreSQL</div>
+                        <div className="skills-badge">Microservices</div>
+                        <div className="skills-badge">Test Automation</div>
+                        <div className="skills-badge">React</div>
+                        <div className="skills-badge">HTML</div>
+                        <div className="skills-badge">CSS</div>
+                        <div className="skills-badge">JavaScript</div>
                     </div>
                 </div>
+
             </div>
         </div>
     );

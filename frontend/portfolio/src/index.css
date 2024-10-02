@@ -60,4 +60,14 @@ button {
   @apply text-lg;
 }
 
+.skills-badge {
+  @apply bg-primary text-white cursor-pointer h-[40px] w-[150px] rounded-lg shadow-lg flex justify-center items-center text-center transition-transform transform hover:scale-105;
+}
 
+.skills {
+  @apply flex flex-wrap justify-center gap-4;
+}
+
+.exam-submit-button {
+  @apply bg-primary w-[200px] h-[40px] mt-2 hover:bg-secondary  rounded-lg
+}
