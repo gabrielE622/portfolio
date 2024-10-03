@@ -1,76 +1,68 @@
-import React, { useState } from "react";
-import Button from '../custom/Button';
+import React, { useEffect, useState } from "react";
+import Button from "../custom/Button";
+import Modal from "../custom/Modal";
 
 function Exams() {
     const [selectedOption, setSelectedOption] = useState(null);
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [feedbackMessage, setFeedbackMessage] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
-    const questions = [
-        {
-            question: "What is AWS?",
-            options: [
-                "A cloud service provider",
-                "Internet company",
-                "Bookstore",
-                "Ecommerce company"
-            ]
-        },
-        {
-            question: "What is React?",
-            options: [
-                "A front-end library",
-                "A backend framework",
-                "A database",
-                "A programming language"
-            ]
-        }
-    ];
+    const question = {
+        question: "What is AWS?",
+        options: [
+            "A cloud service provider",
+            "Internet company",
+            "Traffic Generator",
+            "Technology Sales",
+        ],
+        answer: "A cloud service provider"
+    };
 
     const handleClick = (option) => {
-        setSelectedOption(option);  
-        console.log(option);        
+        setSelectedOption(option);
+        setFeedbackMessage("");
     };
 
     const handleSubmit = () => {
-        if (selectedOption) {
-            alert(`You selected: ${selectedOption}`);
-            if (currentQuestionIndex < questions.length - 1) {
-                setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setSelectedOption(null); 
-            } else {
-                alert("Quiz finished!");
-            }
+        if (selectedOption !== question.answer) {
+            setFeedbackMessage("WRONG! Try again.");
         } else {
-            alert("Please select an option.");
+            setFeedbackMessage("CORRECT! Good job!");
+            setSelectedOption(null);
         }
+
+        setShowModal(true);
+        setTimeout(() => {
+            setShowModal(false);
+        }, 1500); 
     };
 
-    if (!questions[currentQuestionIndex] || !questions[currentQuestionIndex].options) {
-        return <div>Error: Questions data is invalid</div>;
-    }
+    useEffect(() => { }, [selectedOption]);
 
     return (
         <div>
-            <div className="bg-black h-screen flex justify-center items-center">
-                <div className="bg-white w-[500px] h-auto p-6 rounded shadow-lg">
-                    <h1 className="mb-8 text-lg font-bold text-black text-center">
-                        {questions[currentQuestionIndex].question}
-                    </h1>
+            {showModal && (
+                <Modal message={feedbackMessage} />
+            )}
 
-                    {questions[currentQuestionIndex].options.map((option, index) => (
-                        <div key={index} className="flex items-center mb-4">
+            <div id="exams-section" className="bg-black h-screen flex justify-center items-center">
+                <div className="bg-white w-[400px] h-[400px] p-4 rounded shadow-lg relative">
+                    <h1 className="mb-4 text-black flex justify-center items-center">{question.question}</h1>
+
+                    {question.options.map((option, index) => (
+                        <div key={index} className="flex items-center mb-2">
                             <button
-                                className={`h-[25px] w-[25px] rounded-full bg-white hover:bg-primary border-2 border-black mr-4 ${
-                                    selectedOption === option ? "bg-primary" : ""
+                                className={`h-[25px] w-[25px] rounded-full border-2 border-black mr-4 transition-colors duration-300 ${
+                                    selectedOption === option ? "bg-primary" : "bg-white"
                                 }`}
                                 onClick={() => handleClick(option)}
                             ></button>
-                            <h1 className="text-black">{option}</h1>
+                            <span className="text-black">{option}</span>
                         </div>
                     ))}
 
-                    <div className="flex justify-center items-center">
-                        <Button title="Submit" type="exam-submit-button" onClick={handleSubmit} />
+                    <div className="absolute bottom-10 left-0 w-full flex justify-center">
+                        <Button title="Submit" type="exam-submit-button" func={handleSubmit} />
                     </div>
                 </div>
             </div>

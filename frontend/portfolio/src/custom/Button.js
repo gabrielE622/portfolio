@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Button({ title = "Click Me!", type = "custom-button"}) {
+function Button({ title = "Click Me!", type = "custom-button", func}) {
   
   return (
-    <button className={`${type}`}>
+    <button className={`${type}`} onClick={func}>
       {title}
     </button>
   );
