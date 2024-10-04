@@ -32,7 +32,8 @@ function About() {
         { id: "js-badge", name: "JavaScript" },
     ];
 
-    const pythonAssociation = ["python-badge", "fastapi-badge", "psql-badge"];
+    const pythonAssociation = ["python-badge", "fastapi-badge", "psql-badge", "react-badge", "ms-badge", "ta-badge"];
+    const javaAssociation = ["java-badge", "ms-badge", "ta-badge", "ms-badge", "ta-automation"]
 
     return (
         <div className="about-container flex flex-col items-center bg-gray-100 py-16">
