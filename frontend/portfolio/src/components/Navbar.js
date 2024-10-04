@@ -16,14 +16,20 @@ const Navbar = () => {
       examsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const handleContactScroll = () => {
+    const econtactSection = document.getElementById("contact-section");
+    if (econtactSection) {
+      econtactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="navbar-container">
       <h1 className="navbar-h1 cursor-pointer">G</h1>
       <div className="navbar-button-container">
         <Button title="About" />
         <Button title="Projects" />
-        <Button title="Contact" />
-        <Button title="Resume" />
+        <Button title="Contact" func={handleContactScroll}/>
+        <Button title="Resume"/>
         <Button title="Exams" func={handleExamsScroll} />
       </div>
     </div>

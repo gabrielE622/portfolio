@@ -8,7 +8,7 @@ function Contact() {
             </div>
             <p className="mt-5 text-xl text-gray-600">Feel free to reach out</p>
             
-            <div className="mt-10 mb-10 contact-container flex flex-col items-center space-y-6 border border-gray-300 shadow-lg bg-white p-8 rounded-lg w-[750px]">
+            <div id="contact-section"  className="mt-10 mb-10 contact-container flex flex-col items-center space-y-6 border border-gray-300 shadow-lg bg-white p-8 rounded-lg w-[750px]">
                 <input
                     className="bg-gray-100 w-full h-[50px] px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     type="text"
