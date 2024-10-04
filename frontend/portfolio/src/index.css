@@ -61,8 +61,11 @@ button {
 }
 
 .skills-badge {
-  @apply bg-primary text-white cursor-pointer h-[40px] w-[150px] rounded-lg shadow-lg flex justify-center items-center text-center transition-transform transform hover:scale-105;
+  @apply bg-primary text-white cursor-pointer h-[40px] w-[150px] 
+          rounded-lg shadow-lg flex justify-center items-center 
+          text-center transition-transform transform hover:scale-105;
 }
+
 
 .skills {
   @apply flex flex-wrap justify-center gap-4;
