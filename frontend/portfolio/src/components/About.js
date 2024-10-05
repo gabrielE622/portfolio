@@ -2,21 +2,35 @@ import React, { useState, useEffect } from "react";
 
 function About() {
     const [hoveredBadge, setHoveredBadge] = useState(null);
-
-    useEffect(() => {
-        console.log("Hovered Badge:", hoveredBadge);
-    }, [hoveredBadge]);
+    const [clickedBadge, setClickedBadge] = useState(null);
+    const [message, setMessage] = useState("I built a full stack system using Python, FastAPI, and PostgreSQL on the backend, integrating with GitLab and TestRail to manage test runs and tickets. The frontend, developed with React and Tailwind CSS, displays real-time data in a user-friendly portal. This solution was used company-wide to streamline testing and ticket management.");
+    const [showTechContainer, setShowTechContainer] = useState(false);
 
     const handleMouseEnter = (id) => {
-        setHoveredBadge(id);
+        if (!clickedBadge) {
+            setHoveredBadge(id);
+        }
     };
 
     const handleMouseExit = () => {
-        setHoveredBadge(null);  
+        if (!showTechContainer) {
+            setHoveredBadge(null);
+        }
     };
 
-    const handleClicked = () => {
-        console.log("Clicked on:", hoveredBadge);
+    const handleClicked = (id) => {
+        setShowTechContainer((prevState) => {
+            if (clickedBadge === id) {
+                // If clicked again on the same badge, hide the container
+                setClickedBadge(null);
+                return false;
+            } else {
+                // Otherwise, show the container and set the clicked badge
+                setClickedBadge(id);
+                setHoveredBadge(id);
+                return true;
+            }
+        });
     };
 
     const skills = [
@@ -33,7 +47,7 @@ function About() {
     ];
 
     const pythonAssociation = ["python-badge", "fastapi-badge", "psql-badge", "react-badge", "ms-badge", "ta-badge"];
-    const javaAssociation = ["java-badge", "ms-badge", "ta-badge", "ms-badge", "ta-automation"]
+    const javaAssociation = ["java-badge", "ms-badge", "ta-badge"];
 
     return (
         <div className="about-container flex flex-col items-center bg-gray-100 py-16">
@@ -53,6 +67,11 @@ function About() {
                     <p className="text-gray-700">
                         I also enjoy sharing the knowledge I've gained in Software Development, helping others grow in the field. Feel free to connect with me on <a href="https://www.linkedin.com/in/gabriel-espinosa-80a715188/" className="text-primary font-bold">LinkedIn</a>.
                     </p>
+                    {hoveredBadge && showTechContainer && (
+                        <div className="text-stack-container mt-5 w-[550px] h-[200px] border-2 border-gray rounded">
+                            <h1 className="text-blue-400 text-lg">{message}</h1>
+                        </div>
+                    )}
                 </div>
 
                 <div className="skills w-full md:w-5/12">
@@ -64,11 +83,12 @@ function About() {
                                 id={skill.id}
                                 onMouseEnter={() => handleMouseEnter(skill.id)}
                                 onMouseLeave={handleMouseExit}
-                                onClick={handleClicked}
+                                onClick={() => handleClicked(skill.id)}
                                 className={`cursor-pointer h-[40px] w-[150px] rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105 ${
-                                    pythonAssociation.includes(skill.id) && hoveredBadge === "python-badge"
-                                        ? 'bg-blue-600'
-                                        : 'bg-primary'
+                                    (pythonAssociation.includes(skill.id) && hoveredBadge === "python-badge") ||
+                                    (javaAssociation.includes(skill.id) && hoveredBadge === "java-badge")
+                                        ? "bg-blue-600"
+                                        : "bg-primary"
                                 }`}
                             >
                                 {skill.name}
