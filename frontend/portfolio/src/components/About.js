@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Messages from "../constants/Messages";
 
 function About() {
     const [hoveredBadge, setHoveredBadge] = useState(null);
     const [clickedBadge, setClickedBadge] = useState(null);
-    const [message, setMessage] = useState("I built a full stack system using Python, FastAPI, and PostgreSQL on the backend, integrating with GitLab and TestRail to manage test runs and tickets. The frontend, developed with React and Tailwind CSS, displays real-time data in a user-friendly portal. This solution was used company-wide to streamline testing and ticket management.");
+    const [message, setMessage] = useState("");
     const [showTechContainer, setShowTechContainer] = useState(false);
 
     const handleMouseEnter = (id) => {
@@ -26,6 +27,12 @@ function About() {
                 return false;
             } else {
                 // Otherwise, show the container and set the clicked badge
+                if (id === "python-badge") {
+                    setMessage(Messages.pythonTechStack)
+                }
+                if (id === "java-badge") {
+                    setMessage(Messages.javaTechStack)
+                }
                 setClickedBadge(id);
                 setHoveredBadge(id);
                 return true;
@@ -50,7 +57,7 @@ function About() {
     const javaAssociation = ["java-badge", "ms-badge", "ta-badge"];
 
     return (
-        <div className="about-container flex flex-col items-center bg-gray-100 py-16">
+        <div id="about-me-section" className="about-container flex flex-col items-center bg-gray-100 py-16">
             <div className="text-center mb-12">
                 <h1 className="about text-5xl font-bold">About Me</h1>
                 <p className="about-description text-gray-600 mt-4 text-lg">
@@ -68,10 +75,13 @@ function About() {
                         I also enjoy sharing the knowledge I've gained in Software Development, helping others grow in the field. Feel free to connect with me on <a href="https://www.linkedin.com/in/gabriel-espinosa-80a715188/" className="text-primary font-bold">LinkedIn</a>.
                     </p>
                     {hoveredBadge && showTechContainer && (
-                        <div className="text-stack-container mt-5 w-[550px] h-[200px] border-2 border-gray rounded">
-                            <h1 className="text-blue-400 text-lg">{message}</h1>
+                        <div className="text-stack-container mt-3 w-[650px] h-[200px] p-6 bg-gradient-to-br from-white to-blue-50 border border-gray-200 shadow-lg rounded-xl transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                            <h1 className="text-blue-600 text-lg font-semibold leading-relaxed">
+                                {message}
+                            </h1>
                         </div>
                     )}
+
                 </div>
 
                 <div className="skills w-full md:w-5/12">
@@ -84,12 +94,11 @@ function About() {
                                 onMouseEnter={() => handleMouseEnter(skill.id)}
                                 onMouseLeave={handleMouseExit}
                                 onClick={() => handleClicked(skill.id)}
-                                className={`cursor-pointer h-[40px] w-[150px] rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105 ${
-                                    (pythonAssociation.includes(skill.id) && hoveredBadge === "python-badge") ||
-                                    (javaAssociation.includes(skill.id) && hoveredBadge === "java-badge")
+                                className={`cursor-pointer h-[40px] w-[150px] rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105 ${(pythonAssociation.includes(skill.id) && hoveredBadge === "python-badge") ||
+                                        (javaAssociation.includes(skill.id) && hoveredBadge === "java-badge")
                                         ? "bg-blue-600"
                                         : "bg-primary"
-                                }`}
+                                    }`}
                             >
                                 {skill.name}
                             </div>
