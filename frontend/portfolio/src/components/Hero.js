@@ -1,13 +1,15 @@
 import React from "react";
 
+// specialized in Test Automation
+// and backend development using FastAPI and PostgreSQL,
+// expanding into front-end with React.
+
 function Hero() {
     return (
         <div className="hero-container">
-            <h1 className="hero-intro">Gabriel J.</h1>
+            <h1 className="hero-intro ">Gabriel J</h1>
             <p className="hero-body">
-                Software Engineer specialized in Test Automation
-                and backend development using FastAPI and PostgreSQL,
-                expanding into front-end with React.
+                Software Engineer
             </p>
         </div>
     );

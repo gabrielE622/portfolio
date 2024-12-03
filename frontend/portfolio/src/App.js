@@ -7,11 +7,11 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-slate-500">
       <Navbar/>
       <Hero/>
       <About/>
-      <Exams/>
+      {/* <Exams/> */}
       <Contact/>
     </div>
   );

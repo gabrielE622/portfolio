@@ -9,7 +9,7 @@ const Navbar = () => {
     }
   };
 
-  const handleExamsScroll = () => {
+  const handleServices = () => {
     const examsSection = document.getElementById("exams-section");
     if (examsSection) {
       examsSection.scrollIntoView({ behavior: 'smooth' });
@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="navbar-button-container">
         <Button title="About" func={handleAboutMeScroll}/>
         <Button title="Contact" func={handleContactScroll}/>
-        <Button title="Exams" func={handleExamsScroll} />
+        <Button title="Services" func={handleServices} />
       </div>
     </div>
   );

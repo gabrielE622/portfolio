@@ -1,36 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 function Contact() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = () => {
+        if (name === "" || email === "" || message === "") {
+            alert("Populate all fields");
+            return;
+        }
+        axios.post("http://127.0.0.1:8000/users/signup", {
+            name: name,
+            email: email,
+            message: message,
+        })
+        .then(response => console.log(response.data))
+        .catch(error => console.error(error));
+        alert(`${name}, thanks for reaching out.`);
+    };
+
     return (
-        <div className="h-screen bg-gray-100 flex flex-col justify-center items-center">
-            <div className="flex justify-center items-center">
-                <h1 className="mt-5 text-5xl font-bold text-black">Contact</h1>
-            </div>
-            <p className="mt-5 text-xl text-gray-600">Feel free to reach out</p>
-            
-            <div id="contact-section"  className="mt-10 mb-10 contact-container flex flex-col items-center space-y-6 border border-gray-300 shadow-lg bg-white p-8 rounded-lg w-[750px]">
+        <div className="contact-page">
+            <h1 className="contact-header">CONTACT</h1>
+            <div className="contact-container">
                 <input
-                    className="bg-gray-100 w-full h-[50px] px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="contact-input"
                     type="text"
                     placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                    className="bg-gray-100 w-full h-[50px] px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="contact-input"
                     type="email"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <textarea
-                    className="bg-gray-100 w-full h-[150px] px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+                    className="contact-textarea"
                     placeholder="Message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
                 <button
-                    className="bg-blue-500 text-white w-full h-[50px] rounded-md hover:bg-blue-600 transition duration-200 ease-in-out"
+                    className="contact-button"
+                    onClick={handleSubmit}
                 >
                     Submit
                 </button>
             </div>
         </div>
     );
-};
+}
 
 export default Contact;

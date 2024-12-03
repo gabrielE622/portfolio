@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-black text-white;
+  @apply bg-[#93b5c4] text-white;
 }
 
 button {
@@ -12,11 +12,11 @@ button {
 
 .navbar-container {
   @apply flex flex-col md:flex-row items-center justify-between
-    bg-black text-white px-6 py-5 border-b-2 border-white;
+    bg-[#93b5c4] text-white px-6 py-5 border-b-2 border-white;
 }
 
 .navbar-h1 {
-  @apply font-bold text-5xl hover:text-primary delay-150 duration-300 ease-in-out;
+  @apply font-thin text-5xl hover:text-[#82b0c3] delay-150 duration-300 ease-in-out;
 }
 
 .navbar-button-container {
@@ -24,24 +24,24 @@ button {
 }
 
 .custom-button {
-  @apply bg-black hover:text-primary cursor-pointer text-light font-bold py-2 px-4 rounded;
+  @apply bg-[#93b5c4] hover:text-[#469cc2] cursor-pointer text-white text-2xl font-thin py-2 px-4 rounded;
 }
 
 .hero-intro {
-  @apply mt-5 text-white text-5xl font-bold;
+  @apply mt-5 text-white text-5xl font-thin;
 }
 
 
 .hero-container {
-  @apply  flex flex-col justify-center items-center text-center bg-black h-screen;
+  @apply  flex flex-col justify-center items-center text-center bg-[#93b5c4] h-screen;
 }
 
 .hero-intro {
-  @apply text-white text-6xl font-extrabold leading-tight;
+  @apply text-white text-6xl font-extralight leading-tight;
 }
 
 .hero-body {
-  @apply text-gray-400 text-2xl font-light mt-4 max-w-xl;
+  @apply text-white text-2xl font-light mt-4 max-w-xl;
 }
 
 .about-container {
@@ -73,4 +73,32 @@ button {
 
 .exam-submit-button {
   @apply bg-primary w-[200px] h-[40px] mt-2 hover:bg-secondary  rounded-lg
+}
+
+.contact-page {
+  @apply h-screen bg-[#93b5c4] flex flex-col justify-center items-center;
+}
+
+.contact-header {
+  @apply mt-5 text-5xl font-thin text-white;
+}
+
+.contact-container {
+  @apply mt-10 mb-10 flex flex-col items-center space-y-6 border border-white shadow-lg bg-[#93b5c4] p-8 rounded-lg w-[750px];
+}
+
+.contact-input {
+  @apply bg-[#93b5c4] w-full h-[50px] px-4 rounded-md border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white;
+}
+
+.contact-textarea {
+  @apply bg-[#93b5c4] w-full h-[150px] px-4 py-2 rounded-md border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white resize-none;
+}
+
+.contact-button {
+  @apply bg-[#93b5c4] text-white w-full h-[50px] rounded-md hover:bg-white hover:text-black transition duration-200 ease-in-out;
+}
+
+.text-stack-container {
+  @apply mt-3 w-[650px] h-[200px] p-6 bg-gradient-to-br from-white to-blue-50 border border-gray-200 shadow-lg rounded-xl transition-transform transform hover:scale-105 duration-300 ease-in-out
 }
